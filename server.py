@@ -11,6 +11,9 @@ def sent_analyzer():
     # Pass the text to the sentiment_analyzer function and store the response
     response = emotion_detector(text_to_analyze)
 
+    if response is None:
+        return "Invalid text! Please try again!"
+
     # Separate scores from dominant_emotion
     scores = {k: v for k, v in response.items() if k != 'dominant_emotion'}
     
@@ -28,3 +31,4 @@ def render_index_page():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000) 
+
